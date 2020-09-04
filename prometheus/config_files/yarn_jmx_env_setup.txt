@@ -1,0 +1,8 @@
+
+if [[ $YARN_RESOURCEMANAGER_OPTS != *"jmx_prometheus_javaagent"* ]]; then
+    export YARN_RESOURCEMANAGER_OPTS="${YARN_RESOURCEMANAGER_OPTS} -javaagent:/etc/prometheus/jmx_prometheus_javaagent-__JMX_EXPORTER_VERSION__.jar=7005:/etc/hadoop/conf/yarn_jmx_config_resource_manager.yaml -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=50111"
+fi
+
+if [[ $YARN_NODEMANAGER_OPTS != *"jmx_prometheus_javaagent"* ]]; then
+    export YARN_NODEMANAGER_OPTS="${YARN_NODEMANAGER_OPTS} -javaagent:/etc/prometheus/jmx_prometheus_javaagent-__JMX_EXPORTER_VERSION__.jar=7005:/etc/hadoop/conf/yarn_jmx_config_node_manager.yaml -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=50111"
+fi
