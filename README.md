@@ -16,16 +16,21 @@ Build your cluster the way you want, either via the control panel, AWS-CLI or Te
 
 ### Configuring the JMX Exporter on Hadoop
 ```
-{
-    "Classification": "hadoop-env",
-    "Configurations": [{
-        "Classification": "export",
-        "ConfigurationProperties": {
-            "HADOOP_NAMENODE_OPTS": "\"-javaagent:/etc/prometheus/jmx_prometheus_javaagent-0.14.0.jar=7001:/etc/hadoop/conf/hdfs_jmx_config_namenode.yaml -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=50103\"",
-            "HADOOP_DATANODE_OPTS": "\"-javaagent:/etc/prometheus/jmx_prometheus_javaagent-0.14.0.jar=7001:/etc/hadoop/conf/hdfs_jmx_config_datanode.yaml -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=50103\""
+[
+    {
+      "Classification": "hadoop-env",
+      "Configurations": [
+        {
+          "Classification": "export",
+          "Properties": {
+            "HADOOP_DATANODE_OPTS": "-javaagent:/etc/prometheus/jmx_prometheus_javaagent-0.14.0.jar=7001:/etc/hadoop/conf/hdfs_jmx_config_datanode.yaml -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=50103",
+            "HADOOP_NAMENODE_OPTS": "-javaagent:/etc/prometheus/jmx_prometheus_javaagent-0.14.0.jar=7001:/etc/hadoop/conf/hdfs_jmx_config_namenode.yaml -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=50103"
+          }
         }
-    }]
-}
+      ],
+      "Properties": {}
+    }
+]
 ```
 > Stay tuned in the defined version of the JMX Exporter, because if you change, you will need to change this section.
 
