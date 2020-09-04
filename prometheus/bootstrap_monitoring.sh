@@ -45,11 +45,4 @@ wget ${REPO_URL}/prometheus/config_files/yarn_jmx_env_setup.txt
 sed -i "s/__JMX_EXPORTER_VERSION__/${JMX_EXPORTER_VERSION}/g" /tmp/yarn_jmx_env_setup.txt
 cat /tmp/yarn_jmx_env_setup.txt | sudo tee -a /etc/hadoop/conf/yarn-env.sh > /dev/null
 
-IS_MASTER=$(cat /mnt/var/lib/info/instance.json | jq -r ".isMaster" | grep "true" || true)
-if [ ! -z $IS_MASTER ]; then
-    sudo systemctl restart hadoop-yarn-resourcemanager.service;
-else
-    sudo systemctl restart hadoop-yarn-nodemanager.service;
-fi
-
 exit 0
