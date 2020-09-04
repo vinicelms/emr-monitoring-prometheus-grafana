@@ -31,6 +31,6 @@ Build your cluster the way you want, either via the control panel, AWS-CLI or Te
 
 ### Bootstrap
 
-Enter the URL of your script ![bootstrap_monitoring.sh](prometheus/bootstrap_monitoring.sh)
+Enter the URL of your script [bootstrap_monitoring.sh](prometheus/bootstrap_monitoring.sh)
 
 Example: `https://raw.githubusercontent.com/vinicelms/emr-monitoring-prometheus-grafana/master/prometheus/bootstrap_monitoring.sh`
