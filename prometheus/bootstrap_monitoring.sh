@@ -24,13 +24,14 @@ sudo systemctl enable node_exporter
 
 #set up jmx_exporter for pushing application metrics
 wget https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/${JMX_EXPORTER_VERSION}/jmx_prometheus_javaagent-${JMX_EXPORTER_VERSION}.jar
-sudo mkdir /etc/prometheus
+sudo mkdir -p /etc/prometheus/textfiles
 sudo cp jmx_prometheus_javaagent-${JMX_EXPORTER_VERSION}.jar /etc/prometheus
 
 wget ${REPO_URL}/prometheus/config_files/hdfs_jmx_config_namenode.yaml
 wget ${REPO_URL}/prometheus/config_files/hdfs_jmx_config_datanode.yaml
 wget ${REPO_URL}/prometheus/config_files/yarn_jmx_config_resource_manager.yaml
 wget ${REPO_URL}/prometheus/config_files/yarn_jmx_config_node_manager.yaml
+wget ${REPO_URL}/prometheus/textfiles/emr_node_info.sh
 
 HADOOP_CONF='/etc/hadoop/conf'
 sudo mkdir -p ${HADOOP_CONF}
@@ -38,6 +39,8 @@ sudo cp hdfs_jmx_config_namenode.yaml ${HADOOP_CONF}
 sudo cp hdfs_jmx_config_datanode.yaml ${HADOOP_CONF}
 sudo cp yarn_jmx_config_resource_manager.yaml ${HADOOP_CONF}
 sudo cp yarn_jmx_config_node_manager.yaml ${HADOOP_CONF}
+sudo cp emr_node_info.sh /etc/prometheus/textfiles
+sudo /etc/prometheus/textfiles/emr_node_info.sh
 
 
 # Yarn configuration setup
