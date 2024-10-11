@@ -46,7 +46,7 @@ Since the dashboards were created by AWS, I will document how to get the dashboa
 2. Copy the Launch Stack link address:
 > ![Grafana Dashboard Launch Stack](doc-images/grafana-dash-launch-stack.png)
 > Example: https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template?templateURL=https://aws-bigdata-blog.s3.amazonaws.com/artifacts/aws-blog-emr-prometheus-grafana/cloudformation_templates/emrPrometheusGrafana.cf.json
-3. Copy only the parameter `templateurn`:
+3. Copy only the parameter `templateURL`:
 > Example: https://aws-bigdata-blog.s3.amazonaws.com/artifacts/aws-blog-emr-prometheus-grafana/cloudformation_templates/emrPrometheusGrafana.cf.json
 4. Download the contents of this URL or visit via browser
 5. In the file, search for the term `setup-grafana.sh` and download this file
